@@ -3,17 +3,19 @@ package StepDefinitions;
 import Utils.Base;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class LoginSteps extends Base {
+
     @Given("I am on the login page")
     public void i_am_on_the_login_page() throws InterruptedException {
-        loginPage.verifyLoginpageIsDisplayed();
+    homePage.clickLoginButton();
     }
-    @When("I enter valid username sss@sss.com")
-    public void i_enter_valid_username_sss_sss_com(String email)throws InterruptedException {
+    @When("I enter valid username {}")
+    public void i_enter_valid_username(String email)throws InterruptedException {
         loginPage.enterEmail(email);
     }
-    @When("I enter valid password @{int}")
+    @When("I enter valid password {}")
     public void i_enter_valid_password(String password) throws InterruptedException {
         loginPage.enterPassword(password);
     }
@@ -23,11 +25,6 @@ public class LoginSteps extends Base {
     }
     @Then("I should be redirected to the dashboard")
     public void i_should_be_redirected_to_the_dashboard() throws InterruptedException{
-
-        String actualValue = loginPage.getLoginSuccessMessage();
-            System.out.println("Actual login success message: " + actualValue);
-            String expectedValue = "Welcome back, Admin!";
-            Assert.assertEquals(actualValue, expectedValue, "Expected message: " + expectedValue + ", but got: " + actualValue);
-   }
-
+        learnPage.verifyHeading();
+    }
 }

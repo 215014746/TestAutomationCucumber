@@ -8,7 +8,7 @@ Feature: admin panel
 
     When I navigate to the Approvals section
     Then I should see a list of all users that require approval
-    When I select a user and click "Approve"
+    When I select a user and click Approve
     Then the user's account should be activated
     Then I should be able to update the user's information
 

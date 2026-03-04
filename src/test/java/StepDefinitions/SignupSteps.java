@@ -8,34 +8,35 @@ public class SignupSteps extends Base {
 
     @Given("I am on the signup page")
     public void i_am_on_the_signup_page()throws InterruptedException {
-        signupPage.verifySignupPageIsDisplayed();
+        homePage.clickLoginButton();
+        loginPage.clickSignupToggle();
     }
-    @When("I enter valid first name Zee")
+    @When("I enter valid first name {}")
     public void i_enter_valid_first_name(String firstName)throws InterruptedException {
         signupPage.enterFirstName(firstName);
     }
-    @When("I enter valid last name Ndu")
+    @When("I enter valid last name {}")
     public void i_enter_valid_last_name(String lastName)throws InterruptedException {
 
         signupPage.enterLastName(lastName);
     }
-    @When("I enter email zee@ndu.com")
-    public void i_enter_email()throws InterruptedException {
+    @When("I enter email {}")
+    public void i_enter_email(String email)throws InterruptedException {
 
-        signupPage.generateUniqueEmail();
+        signupPage.enterEmail(email);
     }
-    @When("I enter password @{int}")
+    @When("I enter password {}")
     public void i_enter_password(String password)throws InterruptedException {
 
         signupPage.enterPassword(password);
     }
-    @When("I enter confirm password @{int}")
+    @When("I enter confirm password {}")
     public void i_enter_confirm_password(String confirmPassword) throws InterruptedException{
 
         signupPage.enterConfirmPassword(confirmPassword);
     }
-    @When("I select a group 1st Group {int}")
-    public void i_select_a_group_1st_group(String group) throws InterruptedException{
+    @When("I select a group {}")
+    public void i_select_a_group(String group) throws InterruptedException{
 
         signupPage.selectGroup(group);
     }
@@ -44,13 +45,9 @@ public class SignupSteps extends Base {
 
         signupPage.clickRegisterSubmit();
     }
-    @Then("I should see a success message")
-    public String i_should_see_a_success_message()throws InterruptedException {
-        String actualValue = signupPage.getSignupSuccessMessage();
-        System.out.println("Actual signup success message: " + actualValue);
-        String expectedValue = "Registration submitted successfully. Your account is pending admin approval.";
-        Assert.assertEquals(actualValue, expectedValue, "Expected message: " + expectedValue + ", but got: " + actualValue);
-   return actualValue;
+    @Then("I should see a message {}")
+    public void i_should_see_a_success_message(String message) {
+    signupPage.confirmIfMessageIsDisplayed(message);
     }
 
 }

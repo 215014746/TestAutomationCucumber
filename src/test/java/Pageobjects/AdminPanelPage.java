@@ -15,7 +15,7 @@ public class AdminPanelPage {
     @FindBy(id = "//button[contains(text(), \"Back to Website\")]") WebElement backToWebsiteButton_id;
     @FindBy(id = "//button[.//span[text()=\"Logout\"]]") WebElement logoutButton_id;
 
-    //U+D83D
+
     public void verifyAdminDashboardHeadingIsDisplayed() throws InterruptedException {
         adminDashboardHeading_id.isDisplayed();
         Thread.sleep(2000);

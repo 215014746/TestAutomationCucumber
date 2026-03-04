@@ -1,16 +1,30 @@
 package Pageobjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LearnPage {
 
-    @FindBy(id = "practice-heading") WebElement welcomeHeading_id;
+    WebDriver driver;
+    @FindBy(xpath = "//h2[contains(text(),'Welcome back')]") WebElement welcomeHeading_xpath;
     @FindBy(id = "//button[.//span[text()=\"admin\"]]") WebElement adminButton_id;
     @FindBy(id = "(//button[.//span[text()=\"Admin Panel\"]])[1]") WebElement adminPanelButton_id;
 
+    public LearnPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
     public void verifyHeading(){
-        welcomeHeading_id.isDisplayed();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(),'Welcome back')]")));
+
+        welcomeHeading_xpath.isDisplayed();
     }
 
     public void clickAdminButton(){

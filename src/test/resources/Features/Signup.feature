@@ -9,9 +9,11 @@ Feature: User registration and admin approval
     And I enter confirm password <confirmPassword>
     And I select a group <group>
     And I click create account button
-    Then I should see a success message
+    Then I should see a message <Message>
 
-  Examples:
+    Examples:
 
-    | firstName | lastName | email       | password  | confirmPassword | group          |
-    | Zee       | Ndu      |zee@ndu.com | @12345678 | @12345678       | 5th Group 2026  |
+      | firstName | lastName | email        | password   | confirmPassword | group                 | Message                                                                      |
+      | Zee       | Ndu      | zee2@ndu.com | @12345678  | @12345678       | 1st Group 2026 (2026) | Registration submitted successfully. Your account is pending admin approval. |
+      | Zee       | Ndu      | zee2@ndu.com | @123456789 | @12345678       | 1st Group 2026 (2026) | Passwords do not match!                                                      |
+      | Zee       | Ndu      | zee3@        | @12345678  | @12345678       | 1st Group 2026 (2026) | Please enter a valid email address                                           |
