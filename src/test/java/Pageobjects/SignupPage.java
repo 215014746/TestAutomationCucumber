@@ -16,63 +16,63 @@ public class SignupPage {
 
     WebDriver driver;
 
-    @FindBy(xpath = "//h2[@id = \"registration-heading\"]")
-    WebElement registrationheading_id;
-    @FindBy(id = "register-firstName")
-    WebElement registerfirstname_id;
-    @FindBy(id = "register-lastName")
-    WebElement registerlastname_id;
-    @FindBy(id = "register-email")
-    WebElement registeremail_id;
-    @FindBy(id = "register-password")
-    WebElement registerpassword_id;
-    @FindBy(id = "register-confirmPassword")
-    WebElement registerconfirmpassword_id;
-    @FindBy(id = "register-group")
-    WebElement groupDropdownId;
-    @FindBy(id = "register-submit")
-    WebElement registersubmit_id;
-    @FindBy(id = "registration-success")
-    WebElement registrationSuccessMessage_id;
+    @FindBy(xpath = "//h2[@id = \"registration-heading\"]") WebElement registrationheading_id;
+    @FindBy(id = "register-firstName") WebElement registerfirstname_id;
+    @FindBy(id = "register-lastName") WebElement registerlastname_id;
+    @FindBy(id = "register-email") WebElement registeremail_id;
+    @FindBy(id = "register-password") WebElement registerpassword_id;
+    @FindBy(id = "register-confirmPassword") WebElement registerconfirmpassword_id;
+    @FindBy(id = "register-group") WebElement groupDropdownId;
+    @FindBy(id = "register-submit") WebElement registersubmit_id;
+    @FindBy(id = "registration-success") WebElement registrationSuccessMessage_id;
 
     public SignupPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void verifySignupPageIsDisplayed() throws InterruptedException {
+    public void verifySignupPageIsDisplayed()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//h2[@id = \"registration-heading\"]")));
         registrationheading_id.isDisplayed();
-        Thread.sleep(3000);
+
     }
 
-    public void enterFirstName(String firstname) throws InterruptedException {
+    public void enterFirstName(String firstname)  {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("register-firstName")));
         registerfirstname_id.clear();
         registerfirstname_id.sendKeys(firstname);
     }
 
-    public void enterLastName(String lastname) throws InterruptedException {
+    public void enterLastName(String lastname)  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("register-lastName")));
         registerlastname_id.clear();
         registerlastname_id.sendKeys(lastname);
-        Thread.sleep(2000);
+
     }
 
-    public void enterEmail(String email) throws InterruptedException {
+    public void enterEmail(String email)  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("register-email")));
         registeremail_id.clear();
         registeremail_id.sendKeys(email);
-        Thread.sleep(2000);
     }
 
-    public void enterPassword(String password) throws InterruptedException {
+    public void enterPassword(String password) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("register-password")));
         registerpassword_id.clear();
         registerpassword_id.sendKeys(password);
-        Thread.sleep(2000);
+
     }
 
-    public void enterConfirmPassword(String confirmpassword) throws InterruptedException {
+    public void enterConfirmPassword(String confirmpassword)  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("register-confirmPassword")));
         registerconfirmpassword_id.clear();
         registerconfirmpassword_id.sendKeys(confirmpassword);
-        Thread.sleep(2000);
+
     }
 
     public void selectGroup(String group) {
@@ -82,7 +82,9 @@ public class SignupPage {
         select.selectByVisibleText(group);
     }
 
-    public void clickRegisterSubmit() throws InterruptedException {
+    public void clickRegisterSubmit() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("registration-heading")));
         registersubmit_id.click();
 
     }

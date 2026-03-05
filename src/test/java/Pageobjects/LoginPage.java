@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-
 public class LoginPage {
     WebDriver driver;
 
@@ -20,34 +18,39 @@ public class LoginPage {
     @FindBy(id = "login-submit") WebElement loginsubmit_id;
     @FindBy(id = "signup-toggle")WebElement signuptoggle_id;
     @FindBy(id = "registration-heading") WebElement registrationHeading_id;
-    @FindBy(xpath = "//h2[@id = \"login-heading\"]")  WebElement loginHeading_id;
+    @FindBy(xpath = "//h2[@id = \"login-heading\"]")  WebElement loginHeading_xpath;
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void verifyLoginpageIsDisplayed()throws InterruptedException{
-        Thread.sleep(2000);
+    public void verifyLoginpageIsDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@id = \"login-heading\"]")));
         loginpagetitle_xpath.isDisplayed();
 
     }
-    public void enterEmail(String email)throws InterruptedException{
+    public void enterEmail(String email){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-email")));
         email_id.clear();
         email_id.sendKeys(email);
-        Thread.sleep(2000);
     }
-    public void enterPassword(String password)throws InterruptedException{
+    public void enterPassword(String password){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-password")));
         password_id.sendKeys(password);
-        Thread.sleep(2000);
     }
-    public void loginButtonSubmit()throws InterruptedException{
+    public void loginButtonSubmit(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login-submit")));
         loginsubmit_id.click();
-        Thread.sleep(2000);
     }
 
-    public void verifyLoginPageIsDisplayed() throws InterruptedException {
-        loginHeading_id.isDisplayed();
-        Thread.sleep(2000);
+    public void verifyLoginPageIsDisplayed()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@id = \"login-heading\"]")));
+        loginHeading_xpath.isDisplayed();
     }
 
     public void clickSignupToggle()throws InterruptedException {
@@ -56,8 +59,9 @@ public class LoginPage {
         signuptoggle_id.click();
     }
 
-    public void verifyRegistrationHeadingIsDisplayed()throws InterruptedException {
-        Thread.sleep(2000);
+    public void verifyRegistrationHeadingIsDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("registration-heading")));
         registrationHeading_id.isDisplayed();
 
     }

@@ -1,70 +1,91 @@
 package Pageobjects;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class AdminPanelPage {
+    WebDriver driver;
 
-    @FindBy(id = "//h1[contains(text(), \"Admin Dashboard\")]") WebElement adminDashboardHeading_id;
-    @FindBy(id = "//button[text() = \"Approvals\"]") WebElement approvalsButton_id;
-    @FindBy(id = "(//button[contains(text() , \"Approve\")])[2]") WebElement approveButton_id;
-    @FindBy(id = "//div[input[@placeholder=\"Search by name or email...\"]]") WebElement searchBox_id;
-    @FindBy(id = "//button[text() = \"Users\"]") WebElement usersButton_id;
-    @FindBy(id = "//input[contains(@placeholder,\"Search users\")]") WebElement searchUsersBox_id;
-    @FindBy(id = "(//select[.//option[contains(text(),\"Admin\")]])[1]") WebElement roleDropdown_id;
-    @FindBy(id = "//button[contains(text(), \"Back to Website\")]") WebElement backToWebsiteButton_id;
-    @FindBy(id = "//button[.//span[text()=\"Logout\"]]") WebElement logoutButton_id;
+    @FindBy(xpath = "//h1[contains(text(), \"Admin Dashboard\")]") WebElement adminDashboardHeading_xpath;
+    @FindBy(xpath = "//button[text() = \"Approvals\"]") WebElement approvalsButton_xpath;
+    @FindBy(xpath = "//input[@placeholder='Search by name or email...']") WebElement searchApprovalsBox_xpath;
+    @FindBy(xpath = "//button[contains(text(),'Approve')]") WebElement approveButton_xpath;
+    @FindBy(xpath = "//button[text() = \"Users\"]") WebElement usersButton_xpath;
+    @FindBy(xpath = "//input[contains(@placeholder,\"Search users\")]") WebElement searchUsersBox_xpath;
+    @FindBy(xpath = "(//select[.//option[contains(text(),\"Admin\")]])[1]") WebElement roleDropdown_xpath;
+    @FindBy(xpath = "//button[contains(text(), \"Back to Website\")]") WebElement backToWebsiteButton_xpath;
+    @FindBy(xpath = "//button[.//span[text()=\"Logout\"]]") WebElement logoutButton_xpath;
 
 
-    public void verifyAdminDashboardHeadingIsDisplayed() throws InterruptedException {
-        adminDashboardHeading_id.isDisplayed();
-        Thread.sleep(2000);
+    public AdminPanelPage(WebDriver driver) {
+        this.driver = driver;
+    }
+    public void verifyAdminDashboardHeadingIsDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(), \"Admin Dashboard\")]")));
+        adminDashboardHeading_xpath.isDisplayed();
     }
 
-    public void clickApprovalsButton() throws InterruptedException {
-        approvalsButton_id.click();
-        Thread.sleep(2000);
+    public void clickApprovalsButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = \"Approvals\"]")));
+        approvalsButton_xpath.click();
+
     }
 
-       public void enterSearchQuery(String query) throws InterruptedException {
-        searchBox_id.clear();
-        searchBox_id.sendKeys(query);
-        Thread.sleep(2000);
+       public void enterSearchQuery(String query) {
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+           wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Search by name or email...']")));
+           searchApprovalsBox_xpath.clear();
+           searchApprovalsBox_xpath.sendKeys(query);
+
     }
 
-    public void clickApproveButton() throws InterruptedException {
-        approveButton_id.click();
-        Thread.sleep(2000);
+    public void clickApproveButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Approve')]")));
+        approveButton_xpath.click();
     }
 
-    public void clickUsersButton() throws InterruptedException {
-        usersButton_id.click();
-        Thread.sleep(2000);
+    public void clickUsersButton()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text() = \"Users\"]")));
+        usersButton_xpath.click();
     }
 
-    public void enterSearchUsersQuery(String query) throws InterruptedException {
-        searchUsersBox_id.clear();
-        searchUsersBox_id.sendKeys(query);
-        Thread.sleep(2000);
+    public void enterSearchUsersQuery(String query) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@placeholder,\"Search users\")]")));
+        searchUsersBox_xpath.clear();
+        searchUsersBox_xpath.sendKeys(query);
+
     }
 
-    public void selectRoleFromDropdown(String role) throws InterruptedException {
-            roleDropdown_id.sendKeys(role);
-            Thread.sleep(2000);
+    public void selectRoleFromDropdown(String role)  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//select[.//option[contains(text(),\"Admin\")]])[1]")));
+            roleDropdown_xpath.sendKeys(role);
+
     }
 
-    public void clickBackToWebsiteButton() throws InterruptedException {
-        backToWebsiteButton_id.click();
-        Thread.sleep(2000);
+    public void clickBackToWebsiteButton()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), \"Back to Website\")]")));
+        backToWebsiteButton_xpath.click();
+
     }
 
-    public void clickLogoutButton() throws InterruptedException {
-        logoutButton_id.click();
-        Thread.sleep(2000);
+    public void clickLogoutButton()  {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()=\"Logout\"]]")));
+        logoutButton_xpath.click();
+
     }
-
-
-
-
 
 }

@@ -1,0 +1,86 @@
+package StepDefinitions;
+
+import Utils.Base;
+import io.cucumber.java.en.*;
+
+public class AdminPanelSteps extends Base {
+
+    @Given("I am on the admin login page")
+    public void i_am_on_the_admin_login_page() {
+        homePage.clickLoginButton();
+    }
+
+    @When("I enter a valid admin username {}")
+    public void i_enter_a_valid_admin_username_admin(String email) {
+        loginPage.enterEmail(email);
+    }
+
+    @When("I enter a valid admin password {}")
+    public void i_enter_a_valid_admin_password_admin123(String password) {
+        loginPage.enterPassword(password);
+
+    }
+
+    @When("I will click on the login button")
+    public void i_will_click_on_the_login_button() {
+        loginPage.loginButtonSubmit();
+    }
+
+    @Then("I should be redirected to the admin dashboard")
+    public void i_should_be_redirected_to_the_admin_dashboard() {
+        learnPage.verifyHeading();
+    }
+
+
+    @Then("I click the Admin button")
+    public void i_click_the_admin_button() {
+        learnPage.clickAdminButton();
+    }
+
+    @Then("I click the Admin Panel button")
+    public void i_click_the_admin_panel_button() {
+        learnPage.clickAdminPanelButton();
+    }
+
+    @Then("I click the Approvals button")
+    public void i_click_the_approvals_button() {
+        admimPanelPage.clickApprovalsButton();
+    }
+
+    @Then("I search approvals for {string}")
+    public void i_search_approvals_for(String query) {
+        admimPanelPage.enterSearchQuery(query);
+    }
+
+    @Then("I click the Approve button")
+    public void i_click_the_approve_button() {
+        admimPanelPage.clickApproveButton();
+    }
+
+    @Then("I click the Users button")
+    public void i_click_the_users_button() {
+        admimPanelPage.clickUsersButton();
+    }
+
+    @Then("I search users for {}")
+    public void i_search_users_for(String userSearch) {
+        admimPanelPage.enterSearchUsersQuery(userSearch);
+    }
+
+    @Then("I select role {string} from the dropdown")
+    public void i_select_role_from_the_dropdown(String role) {
+        admimPanelPage.selectRoleFromDropdown(role);
+    }
+
+    @Then("I click the Back to Website button")
+    public void i_click_the_back_to_website_button() {
+        admimPanelPage.clickBackToWebsiteButton();
+    }
+
+    @Then("I click the Logout button")
+    public void i_click_the_logout_button() {
+        admimPanelPage.clickLogoutButton();
+    }
+
+
+}

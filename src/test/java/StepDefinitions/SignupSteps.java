@@ -16,32 +16,36 @@ public class SignupSteps extends Base {
         signupPage.enterFirstName(firstName);
     }
     @When("I enter valid last name {}")
-    public void i_enter_valid_last_name(String lastName)throws InterruptedException {
+    public void i_enter_valid_last_name(String lastName){
 
         signupPage.enterLastName(lastName);
     }
     @When("I enter email {}")
-    public void i_enter_email(String email)throws InterruptedException {
+    public void i_enter_email(String email) {
+
+        if(email.equals("AUTO")) {
+            email = signupPage.generateUniqueEmail();
+        }
 
         signupPage.enterEmail(email);
     }
     @When("I enter password {}")
-    public void i_enter_password(String password)throws InterruptedException {
+    public void i_enter_password(String password) {
 
         signupPage.enterPassword(password);
     }
     @When("I enter confirm password {}")
-    public void i_enter_confirm_password(String confirmPassword) throws InterruptedException{
+    public void i_enter_confirm_password(String confirmPassword) {
 
         signupPage.enterConfirmPassword(confirmPassword);
     }
     @When("I select a group {}")
-    public void i_select_a_group(String group) throws InterruptedException{
+    public void i_select_a_group(String group) {
 
         signupPage.selectGroup(group);
     }
     @When("I click create account button")
-    public void i_click_create_account_button() throws InterruptedException{
+    public void i_click_create_account_button(){
 
         signupPage.clickRegisterSubmit();
     }

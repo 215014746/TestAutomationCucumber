@@ -1,20 +1,28 @@
 Feature: admin panel
 
-  Scenario: Admin can access the admin panel
-    Given I am logged in as an admin
-    When I navigate to the admin panel
-    Then I should see the admin dashboard
+  //Scenario: Admin can access the admin panel
+
+  Scenario Outline: Admin logs into the system
+    Given I am on the admin login page
+    When I enter a valid admin username <Username>
+    And I enter a valid admin password <Password>
+    And I will click on the login button
+    Then I should be redirected to the admin dashboard
+    And I click the Admin button
+    And I click the Admin Panel button
+
+    And I click the Approvals button
+    And I search approvals for "<query>"
+    And I click the Approve button
+    And I click the Users button
+    And I search users for "<query>"
+    And I select role "<role>" from the dropdown
+    And I click the Back to Website button
+    And I click the Logout button
+
+    Examples:
+      | Username        | Password  | query       | role  |
+      | admin@gmail.com | @12345678 | zee4@ndu.com | Admin |
 
 
-    When I navigate to the Approvals section
-    Then I should see a list of all users that require approval
-    When I select a user and click Approve
-    Then the user's account should be activated
-    Then I should be able to update the user's information
 
-
-    When I navigate to the Users section
-    Then I should see a list of all users
-    When I view a user and select role
-    Then I should be able to assign or change the user's role (Admin, User)
-    Then the user's role should be updated accordingly

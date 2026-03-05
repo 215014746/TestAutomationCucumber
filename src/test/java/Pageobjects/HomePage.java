@@ -9,15 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
-
 public class HomePage {
 
 WebDriver driver;
 
 
 
-        @FindBy(xpath = "//h1[ normalize-space()=\"Master Test Automation\"]") WebElement homepageTitle_id;
+        @FindBy(xpath = "//h1[ normalize-space()=\"Master Test Automation\"]") WebElement homepageTitle_xpath;
         @FindBy(xpath ="//button[.//span[text()=\"Login\"]]") WebElement loginButton_xpath;
 
 
@@ -25,12 +23,14 @@ WebDriver driver;
         this.driver = driver;
     }
 
-    public void verifyHomePageIsDisplayed() throws InterruptedException{
-        homepageTitle_id.isDisplayed();
-        Thread.sleep(2000);
+    public void verifyHomePageIsDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[ normalize-space()=\"Master Test Automation\"]")));
+
+        homepageTitle_xpath.isDisplayed();
     }
 
-    public void clickLoginButton() throws InterruptedException{
+    public void clickLoginButton(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()=\"Login\"]]")));
         loginButton_xpath.click();

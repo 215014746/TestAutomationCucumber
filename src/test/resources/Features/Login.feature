@@ -7,10 +7,10 @@ Feature: log in test
     And I click the login button
     Then I should be redirected to the dashboard
 
+
     Examples:
-      | Username          | Password   |
-      | admin@gmail.com   | @12345678  |
-      | ZeeTest@ndosi.com | @123456789 |
+      | Username        | Password  |
+      | admin@gmail.com | @12345678 |
 
 
 

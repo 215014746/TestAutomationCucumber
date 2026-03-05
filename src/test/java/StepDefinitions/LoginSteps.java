@@ -9,7 +9,7 @@ public class LoginSteps extends Base {
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() throws InterruptedException {
-    homePage.clickLoginButton();
+        homePage.clickLoginButton();
     }
     @When("I enter valid username {}")
     public void i_enter_valid_username(String email)throws InterruptedException {

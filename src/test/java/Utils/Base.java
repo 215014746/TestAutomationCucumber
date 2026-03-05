@@ -1,9 +1,6 @@
 package Utils;
 
-import Pageobjects.HomePage;
-import Pageobjects.LearnPage;
-import Pageobjects.LoginPage;
-import Pageobjects.SignupPage;
+import Pageobjects.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -15,5 +12,6 @@ public class Base {
     public SignupPage signupPage = PageFactory.initElements(driver, SignupPage.class);
     public LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
     public LearnPage learnPage = PageFactory.initElements(driver, LearnPage.class);
+    public AdminPanelPage admimPanelPage = PageFactory.initElements(driver, AdminPanelPage.class);
 
 }
