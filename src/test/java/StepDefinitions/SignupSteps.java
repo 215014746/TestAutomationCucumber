@@ -6,6 +6,8 @@ import org.testng.Assert;
 
 public class SignupSteps extends Base {
 
+    public static String generatedEmail;
+
     @Given("I am on the signup page")
     public void i_am_on_the_signup_page()throws InterruptedException {
         homePage.clickLoginButton();
@@ -23,11 +25,19 @@ public class SignupSteps extends Base {
     @When("I enter email {}")
     public void i_enter_email(String email) {
 
-        if(email.equals("AUTO")) {
+       /* if(email.equals("AUTO")) {
             email = signupPage.generateUniqueEmail();
         }
 
-        signupPage.enterEmail(email);
+        signupPage.enterEmail(email);*/
+
+        if (email.equalsIgnoreCase("AUTO")) {
+            generatedEmail = signupPage.generateUniqueEmail();
+            signupPage.enterEmail(generatedEmail);
+        }else {
+            generatedEmail = email; // store it even if not AUTO
+            signupPage.enterEmail(email);
+        }
     }
     @When("I enter password {}")
     public void i_enter_password(String password) {

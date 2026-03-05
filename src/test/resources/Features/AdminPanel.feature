@@ -12,17 +12,17 @@ Feature: admin panel
     And I click the Admin Panel button
 
     And I click the Approvals button
-    And I search approvals for "<query>"
+    And I search for a user approve
     And I click the Approve button
     And I click the Users button
-    And I search users for "<query>"
+    And I search a user to assign a role
     And I select role "<role>" from the dropdown
     And I click the Back to Website button
     And I click the Logout button
 
     Examples:
-      | Username        | Password  | query       | role  |
-      | admin@gmail.com | @12345678 | zee4@ndu.com | Admin |
+      | Username        | Password  | role  |
+      | admin@gmail.com | @12345678 | Admin |
 
 
 

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E2E Suite">
+    <test name="End-to-End Tests">
+        <classes>
+            <class name="Runners.SignupRunner"/>
+            <class name="Runners.AdminPanelRunner"/>
+            <class name="Runners.LoginRunner"/>
+        </classes>
+    </test>
+</suite>

@@ -4,6 +4,7 @@ import Utils.Base;
 import io.cucumber.java.en.*;
 
 public class AdminPanelSteps extends Base {
+    String emailToSearch = SignupSteps.generatedEmail;
 
     @Given("I am on the admin login page")
     public void i_am_on_the_admin_login_page() {
@@ -16,7 +17,7 @@ public class AdminPanelSteps extends Base {
     }
 
     @When("I enter a valid admin password {}")
-    public void i_enter_a_valid_admin_password_admin123(String password) {
+    public void i_enter_a_valid_admin_password(String password) {
         loginPage.enterPassword(password);
 
     }
@@ -47,9 +48,13 @@ public class AdminPanelSteps extends Base {
         admimPanelPage.clickApprovalsButton();
     }
 
-    @Then("I search approvals for {string}")
-    public void i_search_approvals_for(String query) {
-        admimPanelPage.enterSearchQuery(query);
+    @Then("I search for a user approve")
+    public void i_search_approvals_for() {
+        String emailToSearch = SignupSteps.generatedEmail; // get it at runtime
+        if (emailToSearch == null) {
+            throw new RuntimeException("No generated email found! Make sure the signup step ran with AUTO email.");
+        }
+        admimPanelPage.enterSearchQuery(emailToSearch);
     }
 
     @Then("I click the Approve button")
@@ -62,9 +67,14 @@ public class AdminPanelSteps extends Base {
         admimPanelPage.clickUsersButton();
     }
 
-    @Then("I search users for {}")
-    public void i_search_users_for(String userSearch) {
-        admimPanelPage.enterSearchUsersQuery(userSearch);
+    @Then("I search a user to assign a role")
+    public void i_search_users_for() {
+
+        String emailToSearch = SignupSteps.generatedEmail; // get it at runtime
+        if (emailToSearch == null) {
+            throw new RuntimeException("No generated email found! Make sure the signup step ran with AUTO email.");
+        }
+        admimPanelPage.enterSearchUsersQuery(emailToSearch);
     }
 
     @Then("I select role {string} from the dropdown")
