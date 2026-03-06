@@ -18,6 +18,7 @@ Feature: admin panel
     And I search a user to assign a role
     And I select role "<role>" from the dropdown
     And I click the Back to Website button
+    And I click again the Admin button
     And I click the Logout button
 
     Examples:

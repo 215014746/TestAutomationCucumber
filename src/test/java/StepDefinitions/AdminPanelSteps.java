@@ -85,6 +85,11 @@ public class AdminPanelSteps extends Base {
     @Then("I click the Back to Website button")
     public void i_click_the_back_to_website_button() {
         adminPanelPage.clickBackToWebsiteButton();
+    }//
+
+    @Then("I click again the Admin button")
+    public void i_click_again_the_admin_button() {
+        learnPage.clickAdminButton();
     }
 
     @Then("I click the Logout button")
