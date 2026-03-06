@@ -16,7 +16,7 @@ public class LoginPage {
     @FindBy(id = "login-email") WebElement email_id;
     @FindBy(id = "login-password") WebElement password_id;
     @FindBy(id = "login-submit") WebElement loginsubmit_id;
-    @FindBy(id = "signup-toggle")WebElement signuptoggle_id;
+    @FindBy(xpath = "//button[@id='signup-toggle']") WebElement signuptoggle_xpath;
     @FindBy(id = "registration-heading") WebElement registrationHeading_id;
     @FindBy(xpath = "//h2[@id = \"login-heading\"]")  WebElement loginHeading_xpath;
 
@@ -53,10 +53,10 @@ public class LoginPage {
         loginHeading_xpath.isDisplayed();
     }
 
-    public void clickSignupToggle()throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("signup-toggle")));
-        signuptoggle_id.click();
+    public void clickSignupToggle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='signup-toggle']")));
+        signuptoggle_xpath.click();
     }
 
     public void verifyRegistrationHeadingIsDisplayed(){

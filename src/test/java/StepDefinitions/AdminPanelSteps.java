@@ -45,7 +45,7 @@ public class AdminPanelSteps extends Base {
 
     @Then("I click the Approvals button")
     public void i_click_the_approvals_button() {
-        admimPanelPage.clickApprovalsButton();
+        adminPanelPage.clickApprovalsButton();
     }
 
     @Then("I search for a user approve")
@@ -54,17 +54,17 @@ public class AdminPanelSteps extends Base {
         if (emailToSearch == null) {
             throw new RuntimeException("No generated email found! Make sure the signup step ran with AUTO email.");
         }
-        admimPanelPage.enterSearchQuery(emailToSearch);
+        adminPanelPage.enterSearchQuery(emailToSearch);
     }
 
     @Then("I click the Approve button")
     public void i_click_the_approve_button() {
-        admimPanelPage.clickApproveButton();
+        adminPanelPage.clickApproveButton();
     }
 
     @Then("I click the Users button")
     public void i_click_the_users_button() {
-        admimPanelPage.clickUsersButton();
+        adminPanelPage.clickUsersButton();
     }
 
     @Then("I search a user to assign a role")
@@ -74,22 +74,22 @@ public class AdminPanelSteps extends Base {
         if (emailToSearch == null) {
             throw new RuntimeException("No generated email found! Make sure the signup step ran with AUTO email.");
         }
-        admimPanelPage.enterSearchUsersQuery(emailToSearch);
+        adminPanelPage.enterSearchUsersQuery(emailToSearch);
     }
 
     @Then("I select role {string} from the dropdown")
     public void i_select_role_from_the_dropdown(String role) {
-        admimPanelPage.selectRoleFromDropdown(role);
+        adminPanelPage.selectRoleFromDropdown(role);
     }
 
     @Then("I click the Back to Website button")
     public void i_click_the_back_to_website_button() {
-        admimPanelPage.clickBackToWebsiteButton();
+        adminPanelPage.clickBackToWebsiteButton();
     }
 
     @Then("I click the Logout button")
     public void i_click_the_logout_button() {
-        admimPanelPage.clickLogoutButton();
+        adminPanelPage.clickLogoutButton();
     }
 
 

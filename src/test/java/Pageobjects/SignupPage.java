@@ -32,7 +32,7 @@ public class SignupPage {
 
     public void verifySignupPageIsDisplayed()  {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("//h2[@id = \"registration-heading\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@id = \"registration-heading\"]")));
         registrationheading_id.isDisplayed();
 
     }
