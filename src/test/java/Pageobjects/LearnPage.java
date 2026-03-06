@@ -40,5 +40,12 @@ public class LearnPage {
         adminPanelButton_xpath.click();
     }
 
+    public boolean verifyAdminPanelButtonIsDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[.//span[text()=\"Admin Panel\"]])[1]")));
+        adminPanelButton_xpath.isDisplayed();
+        return true;
+    }
+
 
 }

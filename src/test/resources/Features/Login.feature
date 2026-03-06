@@ -6,6 +6,9 @@ Feature: log in test
     And I enter valid password <Password>
     And I click the login button
     Then I should be redirected to the dashboard
+    And I click the new Admin button
+    Then  verify that the Admin Panel button is visible
+    And I click on the logout button
 
 
     Examples:
