@@ -23,7 +23,7 @@ Feature: admin panel
 
     Examples:
       | Username        | Password  | role  |
-      | admin@gmail.com | @12345678 | Admin |
+      | admin@gmail.com | @12345678 | admin |
 
 
 

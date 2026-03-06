@@ -1,10 +1,12 @@
 package Pageobjects;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -18,7 +20,7 @@ public class AdminPanelPage {
     @FindBy(xpath = "//button[contains(text(),'Approve')]") WebElement approveButton_xpath;
     @FindBy(xpath = "//button[text() = \"Users\"]") WebElement usersButton_xpath;
     @FindBy(xpath = "//input[contains(@placeholder,\"Search users\")]") WebElement searchUsersBox_xpath;
-    @FindBy(xpath = "(//select[.//option[contains(text(),\"Admin\")]])[1]") WebElement roleDropdown_xpath;
+    @FindBy(xpath = "//select[option[@value='admin']]") WebElement roleDropdown_xpath;
     @FindBy(xpath = "//button[contains(text(), \"Back to Website\")]") WebElement backToWebsiteButton_xpath;
     @FindBy(xpath = "//button[.//span[text()=\"Logout\"]]") WebElement logoutButton_xpath;
 
@@ -67,14 +69,34 @@ public class AdminPanelPage {
 
     }
 
+    public void handleAlertIfPresent() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+            System.out.println("Alert message: " + alert.getText());
+            alert.accept();
+        } catch (Exception e) {
+            System.out.println("No alert present");
+        }
+    }
     public void selectRoleFromDropdown(String role)  {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//select[.//option[contains(text(),\"Admin\")]])[1]")));
-            roleDropdown_xpath.sendKeys(role);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement roleDropdown = wait.until(
+                ExpectedConditions.elementToBeClickable(By.xpath("//select[option[@value='admin']]"))
+        );
+
+        Select select = new Select(roleDropdown);
+        select.selectByValue(role);
+
+        // Handle alert after selecting role
+        handleAlertIfPresent();
 
     }
 
     public void clickBackToWebsiteButton()  {
+        handleAlertIfPresent();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(), \"Back to Website\")]")));
         backToWebsiteButton_xpath.click();
