@@ -23,6 +23,7 @@ public class AdminPanelPage {
     @FindBy(xpath = "//select[option[@value='admin']]") WebElement roleDropdown_xpath;
     @FindBy(xpath = "//button[contains(text(), \"Back to Website\")]") WebElement backToWebsiteButton_xpath;
     @FindBy(xpath = "//button[.//span[text()=\"Logout\"]]") WebElement logoutButton_xpath;
+    @FindBy(xpath = "//button[normalize-space()='\uD83D\uDDD1\uFE0F']") WebElement deleteUserButton_xpath;
 
 
     public AdminPanelPage(WebDriver driver) {
@@ -108,6 +109,14 @@ public class AdminPanelPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[.//span[text()=\"Logout\"]]")));
         logoutButton_xpath.click();
 
+    }
+
+    public void clickDeleteUserButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[normalize-space()='\uD83D\uDDD1\uFE0F']")));
+        deleteUserButton_xpath.click();
+
+        handleAlertIfPresent();
     }
 
 }

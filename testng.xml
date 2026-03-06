@@ -8,6 +8,7 @@
             <class name="Runners.SignupRunner"/>
             <class name="Runners.AdminPanelRunner"/>
             <class name="Runners.LoginRunner"/>
+            <class name="Runners.DeleteRunner"/>
         </classes>
     </test>
 </suite>
